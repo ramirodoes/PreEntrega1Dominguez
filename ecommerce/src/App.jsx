@@ -1,6 +1,7 @@
 import './App.css';
 import NavBar from './components/navbar/navbar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
