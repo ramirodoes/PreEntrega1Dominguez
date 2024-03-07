@@ -1,4 +1,3 @@
-// ecommerce/src/components/header/CartWidget/CartWidget.jsx
 import cart from './assets/cart.svg'
 
 const CartWidget = ({ quantity }) => {

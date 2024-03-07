@@ -1,4 +1,3 @@
-// ecommerce/src/components/navbar/navbar.jsx
 import CartWidget from "../header/CartWidget/CartWidget"
 
 const NavBar = ({ cartItems }) => {

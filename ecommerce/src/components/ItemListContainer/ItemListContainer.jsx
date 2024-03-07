@@ -1,4 +1,3 @@
-// ecommerce/src/components/ItemListContainer/ItemListContainer.jsx
 const ItemListContainer = ({ greeting, addToCart }) => {
     return (
         <div>
