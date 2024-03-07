@@ -1,12 +1,13 @@
+// ecommerce/src/components/header/CartWidget/CartWidget.jsx
 import cart from './assets/cart.svg'
 
-const CartWidget = () => {
+const CartWidget = ({ quantity }) => {
     return (
         <div>
             <img src={cart} alt="cart-widget"/>
-            0
+            {quantity}
         </div>
     )
 }
 
-export default CartWidget
+export default CartWidget;

@@ -1,6 +1,9 @@
+// ecommerce/src/components/navbar/navbar.jsx
 import CartWidget from "../header/CartWidget/CartWidget"
 
-const NavBar = () => {
+const NavBar = ({ cartItems }) => {
+    const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container">
@@ -24,10 +27,10 @@ const NavBar = () => {
                         </li>
                     </ul>
                 </div>
-                <CartWidget/>
+                <CartWidget quantity={totalQuantity} />
             </div>
         </nav>
     )
 }
 
-export default NavBar
+export default NavBar;
