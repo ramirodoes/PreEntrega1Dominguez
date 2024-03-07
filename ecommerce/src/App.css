@@ -40,3 +40,14 @@
 .read-the-docs {
   color: #888;
 }
+
+.product-section {
+  display: flex;
+  gap: 1rem; /* Espacio entre tarjetas */
+}
+
+.product-card {
+  flex: 1;
+  padding: 0.5rem;
+  text-align: center;
+}
