@@ -2,12 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { getProducts } from '../asyncMock';
 import Item from '../Item/Item';
 import '../ItemList/ItemList.css';
-import { useParams } from 'react-router-dom';
 
-const ItemListContainer = ({ greeting }) => {
+const ItemList = () => {
   const [products, setProducts] = useState([]);
-
-  const { categoryId } = useParams()
 
   useEffect(() => {
     getProducts()
@@ -21,13 +18,11 @@ const ItemListContainer = ({ greeting }) => {
 
   return (
     <div className="item-list">
-      <div className="product-section">
-        {products.map((product) => (
-          <Item key={product.id} product={product} />
-        ))}
-      </div>
+      {products.map((product) => (
+        <Item key={product.id} product={product} />
+      ))}
     </div>
   );
 };
 
-export default ItemListContainer;
+export default ItemList;
