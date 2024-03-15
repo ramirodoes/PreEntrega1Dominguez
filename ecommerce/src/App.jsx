@@ -4,27 +4,38 @@ import NavBar from './components/navbar/navbar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ProductDetailPage from './components/ProductDetailPage';
 
-function App() {
-  const [cartItems, setCartItems] = useState([]);
-
-  const removeFromCart = (itemName) => {
-    const updatedCartItems = cartItems.filter(item => item.name !== itemName);
-    setCartItems(updatedCartItems);
+class App extends React.Component {
+  state = {
+    cartItems: [],
+    selectedCategory: null,
   };
 
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <NavBar cartItems={cartItems} />
-        <Routes>
-          <Route path='/' element={<ItemListContainer />} />
-          <Route path='/category/:categoryId' element={<ItemListContainer />} />
-          <Route path='/item/:itemId' element={<ProductDetailPage />} />
-          <Route path='*' element={<ItemListContainer />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
+  removeFromCart = (itemName) => {
+    const updatedCartItems = this.state.cartItems.filter(item => item.name !== itemName);
+    this.setState({ cartItems: updatedCartItems });
+  };
+
+  handleCategorySelect = (category) => {
+    this.setState({ selectedCategory: category });
+  };
+
+  render() {
+    const { cartItems, selectedCategory } = this.state;
+
+    return (
+      <div className="App">
+        <BrowserRouter>
+          <NavBar cartItems={cartItems} onCategorySelect={this.handleCategorySelect} />
+          <Routes>
+            <Route path='/' element={<ItemListContainer selectedCategory={selectedCategory} />} />
+            <Route path='/category/:categoryId' element={<ItemListContainer selectedCategory={selectedCategory} />} />
+            <Route path='/item/:itemId' element={<ProductDetailPage />} />
+            <Route path='*' element={<ItemListContainer selectedCategory={selectedCategory} />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    );
+  }
 }
 
 export default App;
