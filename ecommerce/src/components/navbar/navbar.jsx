@@ -18,20 +18,21 @@ const NavBar = ({ cartItems, onCategorySelect }) => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <Link className="nav-link" to='/'>Nosotros</Link>
+              <Link className="nav-link" to='/nosotros'>Nosotros</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to='/'>Contacto</Link>
+              <Link className="nav-link" to='/contacto'>Contacto</Link>
             </li>
           </ul>
         </div>
         <div>
           <Link to='/'>
-            <h3>Ecommerce</h3>
+            <h3>Inicio</h3>
           </Link>
           <div className='Categories'>
-            <a href="#" className='Option' onClick={() => handleCategorySelect('Ropa oficial')}>Ropa oficial</a>
-            <a href="#" className='Option' onClick={() => handleCategorySelect('Ropa entrenamiento')}>Ropa entrenamiento</a>
+            <Link to="/category/Ropa oficial">Ropa oficial</Link>
+            <br></br>
+            <Link to="/category/Ropa entrenamiento">Ropa entrenamiento</Link>
           </div>
         </div>
       </div>

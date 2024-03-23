@@ -6,20 +6,32 @@ import { useParams } from 'react-router-dom';
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { categoryId } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         const data = categoryId ? await getProductsByCategory(categoryId) : await getProducts();
         setProducts(data);
+        setLoading(false);
       } catch (error) {
         console.error(error);
+        setLoading(false);
       }
     };
 
     fetchData();
   }, [categoryId]);
+
+  if (loading) {
+    return <p>Cargando...</p>;
+  }
+
+  if (products.length === 0) {
+    return <p>No hay productos en esta categoría.</p>;
+  }
 
   return (
     <div className="item-list">
