@@ -1,12 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
 
-const NavBar = ({ cartItems, onCategorySelect }) => {
-  const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-
-  const handleCategorySelect = (category) => {
-    onCategorySelect(category);
-  };
+const NavBar = () => {
+  const { cart } = useContext(CartContext);
+  const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -34,6 +32,9 @@ const NavBar = ({ cartItems, onCategorySelect }) => {
             <br></br>
             <Link to="/category/Ropa entrenamiento">Ropa entrenamiento</Link>
           </div>
+        </div>
+        <div className="cart-items">
+          <p>Total en carrito: {totalQuantity}</p>
         </div>
       </div>
     </nav>
