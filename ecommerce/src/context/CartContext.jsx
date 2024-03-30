@@ -9,12 +9,13 @@ export const CartContext = createContext({
 });
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([])
-  const [total, setTotal] = useState(0)
+  const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState(0);
 
   const addItem = (item, quantity) => {
+    console.log(item)
     if (!isInCart(item.id)) {
-      setCart(prev => [...prev, { ...item, quantity }]);
+      setCart(prev => [...prev, { ...item, quantity }]);  
     } else {
       const updatedCart = cart.map(cartItem => {
         if (cartItem.id === item.id) {
@@ -54,4 +55,4 @@ export const CartProvider = ({ children }) => {
   );
 };
 
-export default CartContext;
+export default CartProvider;
