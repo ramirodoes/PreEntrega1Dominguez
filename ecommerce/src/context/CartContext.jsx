@@ -19,13 +19,13 @@ export const CartProvider = ({ children }) => {
     } else {
       const updatedCart = cart.map(cartItem => {
         if (cartItem.id === item.id) {
-          return { ...cartItem, quantity: cartItem.quantity + quantity };
+          return { ...cartItem, quantity: cartItem.quantity + quantity }
         }
-        return cartItem;
-      });
-      setCart(updatedCart);
+        return cartItem
+      })
+      setCart(updatedCart)
     }
-    updateTotal();
+    updateTotal()
   };
 
   const removeItem = (itemId) => {
@@ -44,8 +44,8 @@ export const CartProvider = ({ children }) => {
   };
 
   const updateTotal = () => {
-    const newTotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    setTotal(newTotal);
+    const newTotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0)
+    setTotal(newTotal)
   };
 
   return (
